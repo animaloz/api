@@ -132,6 +132,7 @@ public class TestController {
         System.out.println("3. string codePoints length =" + s.codePoints().sum());
         System.out.println();
 
+
         System.out.println(3 / 10 * 10);
     }
 
