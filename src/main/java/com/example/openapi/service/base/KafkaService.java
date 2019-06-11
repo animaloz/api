@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class KafkaService {
 
-    @KafkaListener(topics = {"app_log"})
-    public void receive(String message){
-        System.out.println("kafka app_log--消费消息:" + message);
-    }
+//    @KafkaListener(topics = {"app_log"})
+//    public void receive(String message){
+//        System.out.println("kafka app_log--消费消息:" + message);
+//    }
 }

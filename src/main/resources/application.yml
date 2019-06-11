@@ -27,7 +27,7 @@ spring:
       bootstrap-servers: 127.0.0.1:9092,127.0.0.1:9093,127.0.0.1:9094
     consumer:
       enable-auto-commit: true
-#      分组是指消费者分组 共用一个偏移量
+      #      分组是指消费者分组 共用一个偏移量
       group-id: group
       auto-offset-reset: latest
       bootstrap-servers: 127.0.0.1:9092,127.0.0.1:9093,127.0.0.1:9094
@@ -48,3 +48,14 @@ t3:
     lisense: 服务条款
     contact: 后台开发团队
     website:
+dubbo:
+  application:
+    name: open-api
+  registry:
+    address: zookeeper://127.0.0.1:2181
+    protocol: dubbo
+    port: 20880
+  consumer:
+    filter: consumerLogFilter
+    parameters:
+      consumerLogFilter: true

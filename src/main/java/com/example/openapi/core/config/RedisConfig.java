@@ -37,7 +37,6 @@ public class RedisConfig {
 
     /**
      * 对hash类型的数据操作
-     *
      * @param redisTemplate
      * @return
      */
@@ -48,7 +47,6 @@ public class RedisConfig {
 
     /**
      * 对redis字符串类型数据操作
-     *
      * @param redisTemplate
      * @return
      */
@@ -59,7 +57,6 @@ public class RedisConfig {
 
     /**
      * 对链表类型的数据操作
-     *
      * @param redisTemplate
      * @return
      */
@@ -70,7 +67,6 @@ public class RedisConfig {
 
     /**
      * 对无序集合类型的数据操作
-     *
      * @param redisTemplate
      * @return
      */
@@ -81,7 +77,6 @@ public class RedisConfig {
 
     /**
      * 对有序集合类型的数据操作
-     *
      * @param redisTemplate
      * @return
      */

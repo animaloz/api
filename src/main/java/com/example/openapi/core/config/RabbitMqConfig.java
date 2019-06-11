@@ -29,10 +29,8 @@ public class RabbitMqConfig {
     public final static String QUEUE_FANOUT_C = "fanout.C";
 
 
-
-
     @Bean
-    public RabbitListenerContainerFactory<?> rabbitListenerContainerFactory(ConnectionFactory connectionFactory){
+    public RabbitListenerContainerFactory<?> rabbitListenerContainerFactory(ConnectionFactory connectionFactory) {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
         Jackson2JsonMessageConverter jackson2JsonMessageConverter = new Jackson2JsonMessageConverter();
@@ -103,6 +101,7 @@ public class RabbitMqConfig {
     TopicExchange exchange() {
         return new TopicExchange("exchange");
     }
+
     @Bean
     FanoutExchange fanoutExchange() {
         return new FanoutExchange("fanoutExchange");
@@ -131,7 +130,7 @@ public class RabbitMqConfig {
     }
 
     @Bean
-    Binding bindingExchangeA(Queue aMessage,FanoutExchange fanoutExchange) {
+    Binding bindingExchangeA(Queue aMessage, FanoutExchange fanoutExchange) {
         return BindingBuilder.bind(aMessage).to(fanoutExchange);
     }
 

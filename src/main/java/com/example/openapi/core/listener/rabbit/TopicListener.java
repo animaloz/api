@@ -22,17 +22,19 @@ import java.util.stream.Collectors;
  * @Date 2019/4/3
  */
 @Component
-@RabbitListener(bindings = {@QueueBinding(value = @Queue(value = "topic.messages"), exchange = @Exchange(name ="queueMessages"))})
+@RabbitListener(bindings = {@QueueBinding(value = @Queue(value = "topic.messages"), exchange = @Exchange(name = "queueMessages"))})
 public class TopicListener {
     @RabbitHandler(isDefault = true)
     public void byteBody(@Payload byte[] body) {
         System.out.println("Received byte for body " + new String(body));
     }
+
     @RabbitHandler
     public Message message(Message message) {
         System.out.println("Received Message message" + JSON.toJSONString(message));
         return message;
     }
+
     @RabbitHandler
     public String byteBodyStringJob(@Payload String body) {
         System.out.println("Received String for body " + body);
@@ -68,7 +70,7 @@ public class TopicListener {
         stopWatch.start();
         Map map = new LinkedHashMap(size);
         for (String s : list) {
-            if("1000".compareTo(s) < 0){
+            if ("1000".compareTo(s) < 0) {
                 UserInVO lombokVo = UserInVO.builder().address(s + "map").build();
                 map.put(lombokVo.hashCode(), lombokVo.getAddress());
             }

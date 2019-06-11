@@ -23,5 +23,6 @@ public class UserOutVO {
     private Integer age;
     private String address;
     private Date birth;
+    private String sex;
 }
 

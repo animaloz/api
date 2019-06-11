@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @Date 2019/4/3
  */
 @Component
-@RabbitListener(queues = {RabbitMqConfig.QUEUE_HELLO,RabbitMqConfig.QUEUE_USER})
+@RabbitListener(queues = {RabbitMqConfig.QUEUE_HELLO, RabbitMqConfig.QUEUE_USER})
 public class QueueListener {
     @RabbitHandler
     public void process(String hello) {

@@ -1,5 +1,8 @@
 package com.example.openapi.model.vo.in;
 
+import com.example.openapi.model.enums.Sex;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,11 +22,14 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserInVO{
+@ApiModel
+public class UserInVO {
     @NotBlank
     private String uuid;
     private String name;
     private Integer age;
     private String address;
     private Date birth;
+    @ApiModelProperty("性别")
+    private Sex sex;
 }

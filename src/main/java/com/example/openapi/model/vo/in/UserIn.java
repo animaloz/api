@@ -5,13 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- *
  * @author lx
  * @version $Id: UserIn.java, v 0.1 2019-04-12 11:33:55 lx Exp $$
  */

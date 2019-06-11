@@ -13,13 +13,13 @@ import org.springframework.stereotype.Service;
 public class TestServiceImpl implements TestService {
     @Override
     @Async
-    public void doAsync()  {
+    public void doAsync() {
         try {
             Thread.sleep(100);
             System.out.println("异步1");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        int i = 1/0;
+        int i = 1 / 0;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.openapi.controller;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSON;
 import com.example.openapi.core.config.RabbitMqConfig;
 import com.example.openapi.model.vo.in.UserInVO;
@@ -7,6 +8,8 @@ import com.example.openapi.model.vo.out.UserOutVO;
 import com.example.openapi.service.TestService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.open.remote.service.HelloService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageProperties;
@@ -34,6 +37,10 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/test")
 public class TestController {
+
+//    @Reference
+//    private HelloService helloService;
+
     @Autowired
     private TestService testService;
 
@@ -107,9 +114,10 @@ public class TestController {
                                         y -> Math.pow(2, y.doubleValue()),
                                         (u, v) -> v,
                                         LinkedHashMap::new))),
-                Arrays.asList(64, 49, 25, 16, 9, 4, 1, 81, 36, 64)));
+                Arrays.asList(64, 49, 25, 16, 9, 4, 1, 81, 36, 64, 80)));
 
         String date = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+        System.out.println(date);
         // 中文常见字
         String s = "你好";
         System.out.println("1. string length =" + s.length());
@@ -131,7 +139,6 @@ public class TestController {
         System.out.println("3. string char length =" + s.toCharArray().length);
         System.out.println("3. string codePoints length =" + s.codePoints().sum());
         System.out.println();
-
 
         System.out.println(3 / 10 * 10);
     }
@@ -167,14 +174,17 @@ public class TestController {
 
     @GetMapping("getUserVO")
     public UserOutVO getUserVO() {
-        System.out.println("同步1");
-        testService.doAsync();
-        System.out.println("同步2");
-        return UserOutVO.builder().address("地址1111").age(18).name("姓名").birth(new Date()).build();
+//        System.out.println("同步1");
+//        testService.doAsync();
+//        System.out.println("同步2");
+        return null;
+//                UserOutVO.builder().address("地址1111").age(18).name(helloService.sayHello("asfasfd")).birth(new Date()).build();
     }
 
     @PostMapping("getUserVO")
+    @ApiOperation("getUserVO")
     public UserOutVO getUserVO(@RequestBody @Validated UserInVO vo) {
+        System.out.println(vo.getSex());
         return UserOutVO.builder().address(vo.getAddress()).age(vo.getAge()).name(vo.getName()).birth(vo.getBirth()).build();
     }
 }
